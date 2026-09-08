@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 .kotlin
 .idea
+secrets
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
