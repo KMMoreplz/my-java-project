@@ -9,10 +9,6 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**
- * Фабрика соединений с базой данных на основе connection pool HikariCP.
- * Пул создаётся один раз при старте и закрывается при завершении приложения.
- */
 public class ConnectionFactory {
 
     private static final Logger log = LoggerFactory.getLogger(ConnectionFactory.class);
@@ -42,18 +38,10 @@ public class ConnectionFactory {
         Runtime.getRuntime().addShutdownHook(new Thread(this::closeDataSource));
     }
 
-    /**
-     * Возвращает соединение из пула.
-     * Соединение обязательно закрывать через try-with-resources —
-     * оно возвращается обратно в пул.
-     */
     public Connection getConnection() throws SQLException {
         return dataSource.getConnection();
     }
 
-    /**
-     * Закрывает пул соединений (вызывается при завершении приложения).
-     */
     public void closeDataSource() {
         if (dataSource instanceof HikariDataSource hikariDataSource) {
             hikariDataSource.close();

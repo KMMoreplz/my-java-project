@@ -4,11 +4,6 @@ import org.flywaydb.core.Flyway;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Выполнение миграций базы данных с помощью Flyway.
- * При запуске программы проверяется наличие таблицы и, в случае отсутствия,
- * она создаётся миграцией из resources/db/migration.
- */
 public class DatabaseMigrator {
 
     private static final Logger log = LoggerFactory.getLogger(DatabaseMigrator.class);

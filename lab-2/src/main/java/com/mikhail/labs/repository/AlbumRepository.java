@@ -4,13 +4,6 @@ import com.mikhail.labs.model.Album;
 
 import java.util.List;
 
-/**
- * Интерфейс репозитория для работы с альбомами.
- * Определяет CRUD-операции и поиск по второму полю сущности (title).
- *
- * Все методы, кроме {@link #save(Album)}, идемпотентны:
- * многократный повторный вызов возвращает тот же результат.
- */
 public interface AlbumRepository {
 
     /**
