@@ -20,9 +20,6 @@ public class DatabaseMigrator {
         this.schema = schema;
     }
 
-    /**
-     * Применяет недостающие миграции (идемпотентно: повторный запуск ничего не меняет).
-     */
     public void runMigrations() {
         try {
             Flyway flyway = Flyway.configure()

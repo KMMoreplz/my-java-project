@@ -31,10 +31,6 @@ public class PropertiesService {
         }
     }
 
-    /**
-     * Возвращает значение по ключу: сначала ищет переменную окружения
-     * (database.username -> DATABASE_USERNAME), затем application.properties.
-     */
     public String get(String key) {
         String envValue = System.getenv(key.toUpperCase().replace('.', '_'));
         if (envValue != null && !envValue.isBlank()) {

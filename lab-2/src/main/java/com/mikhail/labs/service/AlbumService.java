@@ -5,10 +5,7 @@ import com.mikhail.labs.repository.AlbumRepository;
 
 import java.util.List;
 
-/**
- * Бизнес-логика работы с альбомами.
- * Взаимодействует с репозиторием и не содержит SQL.
- */
+
 public class AlbumService {
 
     private final AlbumRepository repository;

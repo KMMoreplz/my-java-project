@@ -44,6 +44,4 @@ build/
 **/dependency-reduced-pom.xml
 
 ### Env files ###
-# .env — локальные учетные данные для docker compose (не коммитить).
-# .env.example (без реальных паролей) — коммитится.
 .env

@@ -11,11 +11,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * JDBC-реализация репозитория альбомов.
- * Вся работа с базой данных инкапсулирована в этом классе:
- * SQL-запросы не выходят за его пределы.
- */
 public class JdbcAlbumRepository implements AlbumRepository {
 
     private final ConnectionFactory connectionFactory;
