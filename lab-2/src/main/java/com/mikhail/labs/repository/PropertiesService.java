@@ -7,11 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-/**
- * Загрузка настроек подключения к БД из resources/application.properties.
- * Параметры БД не захардкожены в коде: при наличии используется
- * значение из переменной окружения (например DATABASE_USERNAME).
- */
 public class PropertiesService {
 
     private static final Logger log = LoggerFactory.getLogger(PropertiesService.class);
