@@ -58,7 +58,6 @@ public class JdbcAlbumRepository implements AlbumRepository {
                     return map(rs);
                 }
             }
-            // контракт задания: null, если запись не найдена
             return null;
         } catch (SQLException e) {
             throw new RepositoryException("Ошибка при поиске альбома по id=" + id, e);
@@ -78,7 +77,6 @@ public class JdbcAlbumRepository implements AlbumRepository {
                     return map(rs);
                 }
             }
-            // контракт задания: null, если запись не найдена
             return null;
         } catch (SQLException e) {
             throw new RepositoryException("Ошибка при поиске альбома по названию=" + title, e);

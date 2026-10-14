@@ -23,18 +23,16 @@ public class ConnectionFactory {
         config.setDriverClassName("org.postgresql.Driver");
         config.setSchema(schema);
 
-        // Настройки пула (можно настроить под ваши нужды)
-        config.setMaximumPoolSize(10); // максимальное количество соединений в пуле
-        config.setMinimumIdle(5); // минимальное количество простаивающих соединений
-        config.setIdleTimeout(300000); // время простоя соединения (5 минут)
-        config.setMaxLifetime(1800000); // максимальное время жизни соединения (30 минут)
-        config.setConnectionTimeout(30000); // таймаут ожидания соединения (30 секунд)
 
-        // Инициализация пула
+        config.setMaximumPoolSize(10);
+        config.setMinimumIdle(5);
+        config.setIdleTimeout(300000);
+        config.setMaxLifetime(1800000);
+        config.setConnectionTimeout(30000);
+
         dataSource = new HikariDataSource(config);
         log.info("Connection pool HikariCP инициализирован, schema={}", schema);
 
-        // Чтобы избежать утечек ресурсов БД, закрываем пул при завершении приложения
         Runtime.getRuntime().addShutdownHook(new Thread(this::closeDataSource));
     }
 

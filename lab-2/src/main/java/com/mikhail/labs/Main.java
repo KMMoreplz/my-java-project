@@ -26,10 +26,8 @@ public class Main {
         String password = properties.get("database.password");
         String schema = properties.get("database.schema");
 
-        // Пул соединений HikariCP
         ConnectionFactory connectionFactory = new ConnectionFactory(url, user, password, schema);
 
-        // Миграции Flyway: проверяем наличие таблицы и создаём при отсутствии
         new DatabaseMigrator(url, user, password, schema).runMigrations();
 
         AlbumRepository repository = new JdbcAlbumRepository(connectionFactory, schema, TABLE_NAME);
