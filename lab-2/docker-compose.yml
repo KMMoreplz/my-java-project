@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:18
+    restart: "no"
+    environment:
+      POSTGRES_DB: mikhail_labs_db
+      POSTGRES_USER: ${DATABASE_USERNAME:-mikhail}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-mikhail}
+    ports:
+      - "5432:5432" # for debug
+    command: ["postgres", "-c", "log_statement=all"]
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U mikhail -d mikhail_labs_db" ]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+volumes:
+  postgres_data:

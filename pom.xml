@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lab-1</module>
+        <module>lab-2</module>
     </modules>
 
     <properties>
@@ -20,6 +21,10 @@
         <maven-surefire-plugin.version>3.2.2</maven-surefire-plugin.version>
         <maven.shade.plugin.version>3.4.1</maven.shade.plugin.version>
         <junit.version>6.0.2</junit.version>
+        <postgresql.version>42.7.13</postgresql.version>
+        <hikaricp.version>7.0.2</hikaricp.version>
+        <flyway.version>12.8.1</flyway.version>
+        <slf4j.version>2.0.18</slf4j.version>
     </properties>
 
     <dependencyManagement>
@@ -30,6 +35,35 @@
                 <artifactId>junit-jupiter</artifactId>
                 <version>${junit.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <!--  Драйвер PostgreSQL для JDBC  -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>
+            <!--  connection pool для базы данных  -->
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${hikaricp.version}</version>
+            </dependency>
+            <!--  flyway для миграций в базе данных  -->
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flyway.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-database-postgresql</artifactId>
+                <version>${flyway.version}</version>
+            </dependency>
+            <!--  логирование через slf4j  -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
