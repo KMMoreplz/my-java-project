@@ -11,10 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 
-/**
- * Сборка инфраструктурных бинов поверх классов из лабораторной работы №2.
- * Бизнес-логика здесь отсутствует — только подключение репозитория к Spring.
- */
 @Configuration
 public class AppConfig {
 
@@ -25,10 +21,6 @@ public class AppConfig {
         return new PropertiesService();
     }
 
-    /**
-     * Пул соединений поднимается лениво: пока к репозиторию не обратятся,
-     * подключение к БД не требуется (в mvc-тестах базы нет).
-     */
     @Bean
     @Lazy
     public ConnectionFactory connectionFactory(PropertiesService properties) {
@@ -54,10 +46,6 @@ public class AppConfig {
         return new JdbcAlbumRepository(connectionFactory, properties.get("database.schema"), TABLE_NAME);
     }
 
-    /**
-     * Миграции применяются при старте приложения; в тестах без БД
-     * выключаются свойством app.migrate-on-startup=false.
-     */
     @Bean
     @ConditionalOnProperty(name = "app.migrate-on-startup", havingValue = "true", matchIfMissing = true)
     public ApplicationRunner migrationsRunner(DatabaseMigrator migrator) {
